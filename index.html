@@ -1,0 +1,146 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Feedqueue</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="styles/03fcbc81.main.css">
+    <!-- <link rel="stylesheet" href="components/components-font-awesome/css/font-awesome.css"> -->
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.css">
+    <script src="scripts/vendor/0e15c528.modernizr.js"></script>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="/">Feedqueue</a>
+        <ul class="nav pull-right">
+          <li>
+            <a href="#login" data-bind="click: login"><i class="icon-signin"></i> Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" data-bind="with: user, visible: user">
+      <div class="row">
+        <div class="span12">
+          <!--<ul class="breadcrumb">
+            <li>Inbox<span class="divider">/</span></li>
+          </ul>-->
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#inbox" data-toggle="tab">
+                <i class="icon-inbox"></i>
+                <span class="badge" data-bind="text: inbox().count"></span>
+              </a>
+            </li>
+            <li>
+              <a href="#star" data-toggle="tab">
+                <i class="icon-star"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#trash" data-toggle="tab">
+                <i class="icon-trash"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#subscriptions" data-toggle="tab">
+                <i class="icon-rss"></i>
+              </a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="inbox">
+              <ul class="items" data-bind="foreach: inbox().items">
+                <li class="item">
+                  <input type="checkbox" data-bind="checked: linkOpened">
+                  <a target="_blank" data-bind="attr:{href:article().link}, css:{linkOpened:linkOpened}, click: beforeOpenLink">
+                    <span data-bind="text: article().title"></span>
+                  </a>
+                 <div><a data-bind="attr:{href:article().comments}">comments</a></div>
+                  <div class="btn-group">
+                    <button class="btn btn-small" data-bind="click: star, clickBubble: false"><i class="icon-star"></i></button>
+                    <button class="btn btn-small" data-bind="click: trash, clickBubble: false"><i class="icon-trash"></i></button>
+                  </div>
+                  <!--<div class="modal hide" tabindex="-1" data-bind="attr:{id: 'item-' + firebase.name()}">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h3 data-bind="text: title"></h3>
+                    </div>
+                    <div class="modal-body" data-bind="text: content">
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn">Close</a>
+                        <a href="#" class="btn btn-primary">Save changes</a>
+                    </div>
+                  </div>-->
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-pane" id="star">
+              <ul class="nav nav-tabs nav-stacked" data-bind="foreach: star().items">
+                <li class="item">
+                  <a target="_blank" data-bind="attr:{href:article().link}">
+                    <span data-bind="text: article().title"></span>
+                    <div class="btn-group">
+                      <button class="btn btn-small" data-bind="click: trash, clickBubble: false"><i class="icon-trash"></i></button>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-pane" id="trash">
+              <ul class="nav nav-tabs nav-stacked" data-bind="foreach: trash().items">
+                <li class="item">
+                  <a target="_blank" data-bind="attr:{href:article().link}">
+                    <span data-bind="text: article().title"></span>
+                    <div class="btn-group">
+                      <button class="btn btn-small" data-bind="click: inbox"><i class="icon-inbox"></i></button>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-pane" id="subscriptions">
+            <!-- ko with: subscriptions.newItem -->
+              <form class="form-inline" data-bind="submit: create">
+                <input type="url" class="span8" data-bind="value: url">
+                <button type="submit" class="btn">Subscribe</button>
+              </form>
+            <!-- /ko -->
+              <ul class="nav nav-tabs nav-stacked" data-bind="foreach: subscriptions">
+                <li>
+                  <a data-bind="text: url"></a>
+                </li>
+              </ul>
+            </div>
+          </div><!-- .tab-content -->
+        </div>
+      </div>
+    </div>
+    
+    <!--[if lt IE 7]>
+        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+    
+    <script data-main="scripts/e61fbb47.main" src="components/requirejs/require.js"></script>
+  </body>
+</html>
