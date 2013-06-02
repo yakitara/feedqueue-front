@@ -10,8 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link rel="stylesheet" href="styles/03fcbc81.main.css">
-    <!-- <link rel="stylesheet" href="components/components-font-awesome/css/font-awesome.css"> -->
+    <link rel="stylesheet" href="styles/2e90d1a2.main.css">
     <link rel="stylesheet" href="fontawesome/css/font-awesome.css">
     <script src="scripts/vendor/0e15c528.modernizr.js"></script>
   </head>
@@ -58,17 +57,18 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id="inbox">
-              <ul class="items" data-bind="foreach: inbox().items">
-                <li class="item">
-                  <input type="checkbox" data-bind="checked: linkOpened">
+              <ul class="nav nav-tabs nav-stacked" data-bind="foreach: inbox().items">
+                <li class="item" data-bind="visible: visible">
                   <a target="_blank" data-bind="attr:{href:article().link}, css:{linkOpened:linkOpened}, click: beforeOpenLink">
+                    <input type="checkbox" data-bind="checked: linkOpened">
                     <span data-bind="text: article().title"></span>
+                    <div class="btn-group">
+                      <button class="btn btn-small" data-bind="click: star, clickBubble: false"><i class="icon-star"></i></button>
+                      <button class="btn btn-small" data-bind="click: trash, clickBubble: false"><i class="icon-trash"></i></button>
+                      <!-- <button class="btn btn-small" data-toggle="modal" data-bind="attr:{'data-target': '#item-' + firebase.name()}">read</button> -->
+                    </div>
                   </a>
-                 <div><a data-bind="attr:{href:article().comments}">comments</a></div>
-                  <div class="btn-group">
-                    <button class="btn btn-small" data-bind="click: star, clickBubble: false"><i class="icon-star"></i></button>
-                    <button class="btn btn-small" data-bind="click: trash, clickBubble: false"><i class="icon-trash"></i></button>
-                  </div>
+
                   <!--<div class="modal hide" tabindex="-1" data-bind="attr:{id: 'item-' + firebase.name()}">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -141,6 +141,6 @@
       s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
     
-    <script data-main="scripts/e61fbb47.main" src="components/requirejs/require.js"></script>
+    <script data-main="scripts/557cb6a5.main" src="components/requirejs/require.js"></script>
   </body>
 </html>
